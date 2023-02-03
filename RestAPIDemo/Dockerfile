@@ -1,4 +1,5 @@
-FROM openjdk:11
-EXPOSE 8080
-ADD target/restapidemo.jar restapidemo.jar
-ENTRYPOINT [ "java","-jar","restapidemo.jar" ]
+FROM openjdk:8-jdk-alpine
+VOLUME /tmp
+ARG JAR_FILE
+COPY ${JAR_FILE} restapidemo.jar
+ENTRYPOINT ["java","-jar","/restapidemo.jar"]
